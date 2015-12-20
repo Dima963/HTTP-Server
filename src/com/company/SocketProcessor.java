@@ -1,8 +1,9 @@
 package com.company;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
-import java.nio.Buffer;
 
 /**
  * Created by root on 19.12.15.
@@ -11,31 +12,29 @@ public class SocketProcessor implements Runnable {
 
     Socket socket;
 
-    private PrintWriter pw;
-    private BufferedReader br;
+    PrintWriter pw;
+    BufferedReader br;
 
     //constructor
     //which accept a socket
-    public SocketProcessor(Socket socket) throws Throwable{
+    public SocketProcessor(Socket socket) throws  Exception{
 
         this.socket = socket;
-        this.br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        this.pw =  new PrintWriter(socket.getOutputStream());
+        br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        pw =  new PrintWriter(socket.getOutputStream());
     }
 
     public void run(){
         try {
-            String reqS = " ";
+            String reqS = "";
 
-            while (br.ready() || reqS.length() == 0 )
-                reqS += (char) br.read();
+            while (br.ready() || reqS.length() == 0 ) reqS += (char) br.read();
 
+            System.out.println(reqS); //print the question from client
 
-            System.out.println(reqS);
+            HttpRequest req = new HttpRequest(reqS); //question
 
-            HttpRequest req = new HttpRequest(reqS);
-
-            HttpResponse res = new HttpResponse(req);
+            HttpResponse res = new HttpResponse(req); //answer
 
             pw.write(res.respone.toCharArray());
 
