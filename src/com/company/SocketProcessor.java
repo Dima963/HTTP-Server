@@ -27,7 +27,7 @@ public class SocketProcessor implements Runnable {
         try {
             String reqS = " ";
 
-            while (br.ready())
+            while (br.ready() || reqS.length() == 0 )
                 reqS += (char) br.read();
 
 
@@ -38,9 +38,10 @@ public class SocketProcessor implements Runnable {
             HttpResponse res = new HttpResponse(req);
 
             pw.write(res.respone.toCharArray());
-            socket.close();
+
             pw.close();
             br.close();
+            socket.close();
 
         }catch (Exception e)
         {

@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) throws Throwable{
 
+        System.out.println("Server is start");
         ServerSocket server = new ServerSocket(4014); // Connect to the host port
 
 

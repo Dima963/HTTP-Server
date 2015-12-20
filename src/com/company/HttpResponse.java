@@ -14,7 +14,7 @@ public class HttpResponse {
     String respone;
 
     //root path of the server
-    String root = "/home/user/Документи/rootServer";
+    String root = "Документи/rootServer";
 
 
     public HttpResponse(HttpRequest request) {
@@ -27,6 +27,7 @@ public class HttpResponse {
 
             respone += "Server: Our java Server/1.0.0 \r\n";
 
+            respone += "Connection: close \r\n";
             respone += "Content-Type: text/html \r\n";
             respone += "Content-Length: text/html" +f.length()+"\r\n";
             respone += "\r\n";
@@ -38,6 +39,7 @@ public class HttpResponse {
                 respone +=(char) s;
             }
 
+            fis.close();
         } catch (FileNotFoundException e) {
           respone = respone.replace("200", "404");
         } catch (IOException e) {

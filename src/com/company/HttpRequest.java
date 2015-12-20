@@ -12,7 +12,8 @@ public class HttpRequest {
 
        //this line basically split first line using space" " and then select the 2nd item
 
-       filename = line[0].split(" ")[1];
+       line = line[0].split(" ");
+       filename = line[1];
 
 
     }
