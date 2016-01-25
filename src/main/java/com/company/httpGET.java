@@ -1,6 +1,5 @@
 package com.company;
 
-
 import java.io.*;
 import java.net.Socket;
 
@@ -8,6 +7,7 @@ public class httpGET implements IHttpMethod {
 
     httpRequest req;
     String response;
+    String responseHead;
     PrintWriter pw;
     Socket socket;
     String root = "/home/user/Документи/rootServer";
@@ -16,10 +16,8 @@ public class httpGET implements IHttpMethod {
 
         this.req =  request;
         this.socket =  socket;
-
-
-
         req =  request;
+
         File f = new File(root+req.Filename);
 
         try {
@@ -36,18 +34,35 @@ public class httpGET implements IHttpMethod {
 
             int s;
             while(!((s = fis.read()) == -1)){
-                response +=(char) s;
+                responseHead +=(char) s;
             }
 
+            Director director = new Director();
+            ResponseBuilder responseBuilder = new httpResponseBuilder(response, responseHead);
 
-            pw.write(response.toCharArray());
+            director.setResponseBuilder(responseBuilder);
+            director.constructResponse();
+
+            Response res = director.getResponse();
+
+        
+
+            pw.write(String.valueOf(res));
+
             pw.close();
+
             fis.close();
+
             socket.close();
+
         } catch (FileNotFoundException e) {
+
             response = response.replace("200", "404");
+
         } catch (Exception e) {
+
             response = response.replace("200", "500");
+
         }
 
     }

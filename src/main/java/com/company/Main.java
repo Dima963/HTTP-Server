@@ -8,9 +8,7 @@ public class Main {
     ServerSocket server;
 
     public static void main(String[] args) throws Throwable{
-
         new Main().startServer();
-
     }
 
     public void startServer() throws Exception {
@@ -23,7 +21,7 @@ public class Main {
     private void acceptResponse() throws Exception {
         while (true){
             Socket socket = server.accept();
-            SocketProcessor session =  new SocketProcessor(socket);
+            SocketProcess session =  new SocketProcess(socket);
             new Thread(session).start();
         }
     }
