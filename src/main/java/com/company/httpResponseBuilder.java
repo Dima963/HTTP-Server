@@ -1,16 +1,17 @@
 package com.company;
 
-/**
- * Created by root on 23.01.16.
- */
+import com.company.ResponseBuilder;
+
 public class httpResponseBuilder extends ResponseBuilder {
 
     String Body;
+
     String Head;
 
     public httpResponseBuilder(String head, String body){
 
         this.Head =  head;
+
         this.Body = body;
 
     }

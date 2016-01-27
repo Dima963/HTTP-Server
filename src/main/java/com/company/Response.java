@@ -5,16 +5,8 @@ public class Response {
     private String head;
     private String body;
 
-    public String getHead(){
-        return head;
-    }
-
     public void setHead(String head){
         this.head= head;
-    }
-
-    public String getBody(){
-        return body;
     }
 
     public void setBody(String body){
@@ -22,6 +14,9 @@ public class Response {
     }
 
     public String toString(){
-        return head + body;
-    }
+
+    return head + body;
+
+   }
+
 }

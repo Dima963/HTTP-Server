@@ -14,6 +14,7 @@ public class Main {
     public void startServer() throws Exception {
         System.out.println("Server is start");
         server = new ServerSocket(host); // Connect to the host port
+        System.out.println("Connect to the host port");
         acceptResponse();
 
     }
@@ -21,7 +22,9 @@ public class Main {
     private void acceptResponse() throws Exception {
         while (true){
             Socket socket = server.accept();
+            System.out.println("Connect");
             SocketProcess session =  new SocketProcess(socket);
+            System.out.println("Start new Thread");
             new Thread(session).start();
         }
     }

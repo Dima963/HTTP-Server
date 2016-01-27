@@ -11,12 +11,9 @@ public class SocketProcess implements Runnable {
     BufferedReader br;
     httpMethodContext httpMethod =  new httpMethodContext();
 
-    //constructor
-    //which accept a socket
     public SocketProcess(Socket socket) throws  Exception{
 
         this.socket = socket;
-
         br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
@@ -30,6 +27,7 @@ public class SocketProcess implements Runnable {
                 reqS +=(char)br.read();
             }
 
+            System.out.println("print the question from client");
             System.out.println(reqS);  //print the question from client
 
             httpRequest req  = new httpRequest(reqS);

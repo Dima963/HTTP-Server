@@ -30,6 +30,9 @@ public class httpGET implements IHttpMethod {
             response += "Content-Length: " +f.length()+" \r\n";
             response += "\r\n";
 
+           // System.out.println("Response---------------------------------------");
+         //   System.out.println(response);
+
             FileInputStream fis = new FileInputStream(f);
 
             int s;
@@ -45,7 +48,7 @@ public class httpGET implements IHttpMethod {
 
             Response res = director.getResponse();
 
-        
+
 
             pw.write(String.valueOf(res));
 

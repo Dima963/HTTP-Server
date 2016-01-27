@@ -1,16 +1,17 @@
 package com.company;
 
-/**
- * Created by root on 23.01.16.
- */
+import com.company.Response;
+import com.company.ResponseBuilder;
+
 public class Director {
+
     private ResponseBuilder responseBuilder;
 
     public void setResponseBuilder(ResponseBuilder responseBuilder){
         this.responseBuilder = responseBuilder;
     }
 
-    public  Response getResponse(){
+    public Response getResponse(){
 
         return responseBuilder.getResponse();
 
@@ -24,4 +25,5 @@ public class Director {
 
 
     }
+
 }
