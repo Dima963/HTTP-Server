@@ -1,7 +1,4 @@
-package com.company;
-
-import com.company.Response;
-import com.company.ResponseBuilder;
+package com.company.httpServer.com.company.worker.BuildResponse;
 
 public class Director {
 

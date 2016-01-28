@@ -1,4 +1,10 @@
-package com.company;
+package com.company.httpServer.com.company.worker;
+
+import com.company.httpServer.com.company.server.httpDelegates;
+import com.company.httpServer.com.company.worker.BuildResponse.Director;
+import com.company.httpServer.com.company.worker.BuildResponse.Response;
+import com.company.httpServer.com.company.worker.BuildResponse.ResponseBuilder;
+import com.company.httpServer.com.company.worker.BuildResponse.httpResponseBuilder;
 
 import java.io.*;
 import java.net.Socket;
@@ -8,7 +14,6 @@ public class httpGET implements IHttpMethod {
     httpRequest req;
     String response;
     String responseHead;
-    PrintWriter pw;
     Socket socket;
     String root = "/home/user/Документи/rootServer";
 
@@ -21,7 +26,6 @@ public class httpGET implements IHttpMethod {
         File f = new File(root+req.Filename);
 
         try {
-            pw = new PrintWriter(socket.getOutputStream());
 
             response =  "HTTP/1.1 200 \r\n";
             response += "Server: Our java Server/1.0.0 \r\n";
@@ -30,8 +34,6 @@ public class httpGET implements IHttpMethod {
             response += "Content-Length: " +f.length()+" \r\n";
             response += "\r\n";
 
-           // System.out.println("Response---------------------------------------");
-         //   System.out.println(response);
 
             FileInputStream fis = new FileInputStream(f);
 
@@ -49,14 +51,10 @@ public class httpGET implements IHttpMethod {
             Response res = director.getResponse();
 
 
+            httpDelegates delegates = new httpDelegates(res, socket);
 
-            pw.write(String.valueOf(res));
-
-            pw.close();
 
             fis.close();
-
-            socket.close();
 
         } catch (FileNotFoundException e) {
 

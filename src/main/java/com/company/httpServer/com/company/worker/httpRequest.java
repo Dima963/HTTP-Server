@@ -1,4 +1,4 @@
-package com.company;
+package com.company.httpServer.com.company.worker;
 
 public class httpRequest {
 
@@ -18,6 +18,9 @@ public class httpRequest {
 
         RequestMethod = line[0];
     }
+
+
+
 
 
 }

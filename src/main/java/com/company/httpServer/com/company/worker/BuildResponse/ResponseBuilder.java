@@ -1,6 +1,6 @@
-package com.company;
+package com.company.httpServer.com.company.worker.BuildResponse;
 
-import com.company.Response;
+import com.company.httpServer.com.company.worker.BuildResponse.Response;
 
 /**
  * Created by root on 23.01.16.

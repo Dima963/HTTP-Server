@@ -1,4 +1,4 @@
-package com.company;
+package com.company.httpServer.com.company.worker;
 
 
 import java.net.Socket;
