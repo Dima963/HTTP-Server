@@ -2,9 +2,9 @@ package com.company.httpServer.com.company.worker;
 
 public class httpRequest {
 
-    String Filename;
+    public String Filename;
 
-    String RequestMethod;
+   public String RequestMethod;
 
     public  httpRequest(String request){
 
@@ -14,9 +14,13 @@ public class httpRequest {
 
         line = line[0].split(" ");
 
+        RequestMethod = line[0];
+
         Filename = line[1];
 
-        RequestMethod = line[0];
+
+
+
     }
 
 
